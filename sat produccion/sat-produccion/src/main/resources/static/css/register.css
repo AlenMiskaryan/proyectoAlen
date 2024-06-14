@@ -1,0 +1,65 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: none;
+}
+
+.card-header img {
+    max-width: 80px;
+    margin-bottom: 10px;
+}
+
+.card-header h2 {
+    font-size: 20px;
+    color: #333;
+}
+
+.btn-outline-danger {
+    border-color: #db4437;
+    color: #db4437;
+}
+
+.btn-outline-danger img {
+    margin-right: 10px;
+}
+
+.btn-outline-primary {
+    border-color: #4267B2;
+    color: #4267B2;
+}
+
+.btn-outline-primary img {
+    margin-right: 10px;
+}
+
+.form-check-label a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.form-check-label a:hover {
+    text-decoration: underline;
+}
+
+.card-footer {
+    background-color: #fff;
+    border-top: none;
+}
+
+.card-footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.card-footer a:hover {
+    text-decoration: underline;
+}

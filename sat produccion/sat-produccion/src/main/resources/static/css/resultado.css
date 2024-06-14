@@ -1,0 +1,30 @@
+   body {
+       background-color: #f7f9fc;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       height: 100vh;
+       margin: 0;
+   }
+
+   .container {
+       background: white;
+       padding: 2rem;
+       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+       border-radius: 12px;
+       max-width: 600px;
+       text-align: center;
+   }
+
+   .container h1 {
+       color: #444;
+   }
+
+   .container p {
+       margin-top: 1rem;
+       color: #555;
+   }
+
+   .btn-container {
+       margin-top: 2rem;
+   }

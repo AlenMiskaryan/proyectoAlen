@@ -1,0 +1,40 @@
+body {
+    background-color: #f7f9fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.container {
+    background: white;
+    padding: 2rem;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 12px;
+    max-width: 900px;
+}
+.header-image {
+    max-width: 100%;
+    height: auto;
+}
+.left, .right {
+    padding: 1rem;
+}
+.left {
+    border-right: 1px solid #ddd;
+}
+.right h2 {
+    color: #444;
+    margin-bottom: 1rem;
+}
+.link-container {
+    margin-top: 1rem;
+    text-align: center;
+}
+.link-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+.link-container a:hover {
+    text-decoration: underline;
+}

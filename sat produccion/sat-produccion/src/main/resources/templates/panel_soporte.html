@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Soporte</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" th:href="@{/images/logo_sat.png}">
+    <link rel="stylesheet" th:href="@{/css/panel_soporte.css}">
+
+    <style>
+       
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img th:src="@{/images/logo_sat.png}" alt="SAT Technology">
+                SAT Technology
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a th:href="@{/ia}" class="nav-link">MI PANEL IA</a>
+                    </li>
+                    <li class="nav-item">
+                        <form th:action="@{/logout}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title text-center">Tickets de Soporte</h1>
+                <button class="btn btn-primary mb-3" onclick="window.location.reload();">Cargar Tickets</button>
+                <div th:if="${tickets != null}">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th onclick="ordenarPorPrioridad()">Prioridad</th>
+                                <th>Título</th>
+                                <th>Descripción</th>
+                                <th>Estado</th>
+                                <th>Usuario Asignado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="ticket : ${tickets}">
+                                <td th:text="${ticket.id}"></td>
+                                <td th:text="${ticket.prioridad}"></td>
+                                <td th:text="${ticket.titulo}"></td>
+                                <td th:text="${ticket.descripcion}"></td>
+                                <td th:text="${ticket.estado}"></td>
+                                <td th:text="${ticket.usuarioAsignado != null ? ticket.usuarioAsignado.nombre + ' ' + ticket.usuarioAsignado.apellido : 'No Asignado'}"></td>
+                                <td>
+                                    <form th:action="@{/soporte/tickets/{id}/actualizar(id=${ticket.id})}" method="post">
+                                        <input type="hidden" th:name="id" th:value="${ticket.id}"/>
+                                        <label for="text">Solución</label>
+                                        <input type="text" th:name="descripcion" th:value="${ticket.descripcion}" placeholder="Actualizar descripción" class="form-control mb-2"/>
+                                        <select th:name="estado" class="form-control mb-2">
+                                            <option th:each="estado : ${T(com.technology.sat.produccion.Class.Estado).values()}"
+                                                th:value="${estado}" th:text="${estado}"
+                                                th:selected="${estado.name() == ticket.estado}">
+                                            </option>
+                                        </select>
+                                        <select th:name="prioridad" class="form-control mb-2">
+                                            <option th:each="prioridad : ${T(com.technology.sat.produccion.Class.Prioridad).values()}"
+                                                th:value="${prioridad}" th:text="${prioridad}"
+                                                th:selected="${prioridad.name() == ticket.prioridad}">
+                                            </option>
+                                        </select>
+                                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div th:unless="${tickets}">
+                    <p>No hay tickets disponibles para mostrar.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function ordenarPorPrioridad() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const sort = urlParams.get('sort') === 'prioridadDesc' ? 'prioridadAsc' : 'prioridadDesc';
+            urlParams.set('sort', sort);
+            window.location.search = urlParams.toString();
+        }
+    </script>
+</body>
+</html>

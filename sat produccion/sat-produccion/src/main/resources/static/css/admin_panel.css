@@ -1,0 +1,39 @@
+body {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: #fff;
+}
+.navbar-brand img {
+    height: 50px;
+}
+.container {
+    margin-top: 20px;
+}
+.btn-primary, .btn-secondary, .btn-success, .btn-danger, .btn-warning {
+    margin-right: 10px;
+}
+.table {
+    margin-top: 20px;
+    background-color: #fff;
+    color: #000;
+}
+.table th {
+    background-color: #343a40;
+    color: #fff;
+}
+.form-container {
+    background: #343a40;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.form-container label, .form-container input, .form-container select {
+    color: #fff;
+}
+.form-container input, .form-container select {
+    background-color: #495057;
+}
+.form-container button {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+

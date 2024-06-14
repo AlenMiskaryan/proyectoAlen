@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido a la IA de SatTechnology</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> 
+    <link rel="icon" th:href="@{/images/logo_sat.png}">
+    <style>
+        body {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .card-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .card-text {
+            font-size: 1.2rem;
+        }
+        .input-group {
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .input-group input {
+            border: none;
+        }
+        .input-group-append button {
+            border: none;
+            background-color: #6a11cb;
+            color: white;
+        }
+        #chatResponse {
+            min-height: 150px;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            background: #f8f9fa;
+            color: #333;
+        }
+        #footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <h1 class="card-title text-center text-dark">Bienvenido a la IA de SatTechnology</h1>
+                        <p class="card-text text-center text-dark">Haz las preguntas sobre Sistemas de Asistencia Técnica y nuestra inteligencia artificial te contestará en unos segundos.</p>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="inputText" placeholder="Escribe tu mensaje...">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" onclick="getChatResponse()">Enviar</button>
+                            </div>
+                        </div>
+                        <div id="chatResponse" class="bg-light text-dark"></div>
+                        <div id="message" class="text-danger mt-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        async function fetchChatResponse(inputText) {
+            const apiUrl = 'https://api.openai.com/v1/chat/completions';
+            const apiKey = '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'; 
+
+            const res = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${apiKey}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    model: 'gpt-4',
+                    messages: [{ role: 'system', content: 'Usuario se unió a la conversación' }, { role: 'user', content: inputText }],
+                })
+            });
+
+            const data = await res.json();
+            return data;
+        }
+
+        function displayResponse(response) {
+            const responseText = response.choices[0].message.content;
+            const chatResponseElement = document.getElementById("chatResponse");
+            chatResponseElement.textContent = responseText;
+        }
+
+        function getChatResponse() {
+            const inputText = document.getElementById('inputText').value;
+            if (inputText.trim() === "") {
+                document.getElementById('message').textContent = "Por favor, escribe un mensaje.";
+                return;
+            }
+            document.getElementById('message').textContent = "";
+            fetchChatResponse(inputText).then(response => {
+                displayResponse(response);
+            }).catch(error => {
+                document.getElementById('message').textContent = "Hubo un error obteniendo la respuesta. Intenta nuevamente más tarde.";
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('chatResponse').textContent = "Hola, Bienvenido a su panel de la IA de SatTechnology. ¿En qué puedo ayudarte hoy?";
+        });
+    </script>
+</body>
+</html>

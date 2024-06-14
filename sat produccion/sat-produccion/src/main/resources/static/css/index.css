@@ -1,0 +1,203 @@
+/* bloque inicio */
+
+.inicio {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.contenido-texto {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+}
+
+.contenido-texto h1 {
+    font-size: 5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    /* Espacio después del título */
+}
+
+.contenido-texto p {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+}
+
+.btn-demo-large {
+    font-size: 2.5rem; 
+    padding: 1.5rem 3rem; 
+}
+
+
+
+
+/* Carousel base class */
+.carousel {
+    margin-bottom: 4rem;
+}
+
+.carousel-caption {
+    bottom: 3rem;
+    z-index: 10;
+}
+
+.carousel-item {
+    height: 32rem;
+}
+
+@media (min-width: 40em) {
+
+    .carousel-caption p {
+        margin-bottom: 1.25rem;
+        font-size: 1.25rem;
+        line-height: 1.4;
+    }
+}
+
+
+.contenedor-logo-titulo{
+    text-align: center;
+    color: rgb(41, 79, 194);
+}
+
+.contenedor-h4-p{
+    text-align: center;
+}
+
+.parrafo-margenes{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+
+#tabla-logos-empresas {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#tabla-logos-empresas td {
+    padding: 20px;
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+}
+
+/* Estilos específicos para las imágenes de los logos */
+#logo-itelnet,
+#logo-make,
+#logo-mailjet {
+    max-height: 50px;
+    width: auto; 
+    opacity: 0.8;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#logo-openIA{
+    width: 150px;
+} 
+
+#logo-openIA:hover,
+#logo-itelnet:hover,
+#logo-make:hover,
+#logo-mailjet:hover 
+    {
+    opacity: 1;
+}
+
+
+#demo-info{
+    background-color: rgb(65, 65, 202); 
+    color: white;
+}
+
+#titulo-demo{
+    padding-top: 2%;
+    padding-left: 2%;
+    font-weight: bolder;
+}
+
+#parrafo-demo{
+    padding-left: 2%;
+    font-size: 20px;
+}
+
+#button-demo-info{
+    margin-left: 45%;
+    margin-bottom: 2%;
+    padding: 0.5%;
+    border-radius: 5px;
+    font-weight: bold; 
+    color:  rgb(65, 65, 202);
+    background-color: aquamarine;
+}
+
+#button-demo-info:hover{
+    color:  rgb(17, 17, 116);
+}
+
+
+/* bloque final  */
+
+.titulo-soporte{
+    text-align: center;
+    color:  rgb(65, 65, 202);
+}
+
+.titulo-soporte-margin-top{
+    margin-top: 5%;
+}
+
+.servicios {
+    padding: 50px 0;
+}
+
+.service-icon {
+    width: 80px; 
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.servicios h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.servicios p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .servicios .col-md-4 {
+        margin-bottom: 30px;
+    }
+}
